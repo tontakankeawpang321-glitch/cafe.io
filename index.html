@@ -64,6 +64,8 @@
                     </button>
                 </div>
 
+                <!-- Removed Car Care Near Me Button here as requested -->
+
                 <!-- Filter -->
                 <div class="flex space-x-2">
                     <div class="flex-1 relative">
@@ -258,15 +260,21 @@
 
     <!-- BOTTOM NAV -->
     <nav class="fixed bottom-0 w-full glass-nav pb-safe z-50 h-[80px]">
-        <div class="grid grid-cols-2 h-16 max-w-md mx-auto">
+        <div class="grid grid-cols-3 h-16 max-w-md mx-auto">
             <button onclick="switchTab('home')" class="nav-btn active flex flex-col items-center justify-center text-gray-400 hover:text-blue-600" data-page="home">
                 <i class="fa-solid fa-house text-xl mb-1"></i> <span class="text-[10px] font-medium">หน้าหลัก</span>
             </button>
+            
             <button onclick="switchTab('add-cafe')" class="nav-btn flex flex-col items-center justify-center text-gray-400 hover:text-blue-600 relative" data-page="add-cafe">
                 <div class="absolute -top-5 bg-blue-600 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg border-4 border-white">
                     <i class="fa-solid fa-plus text-xl"></i>
                 </div>
                 <span class="text-[10px] font-medium mt-6">ลงประกาศ</span>
+            </button>
+
+            <!-- Near Me Button in Nav -->
+            <button onclick="openNearMe()" class="flex flex-col items-center justify-center text-gray-400 hover:text-blue-600">
+                <i class="fa-solid fa-location-arrow text-xl mb-1"></i> <span class="text-[10px] font-medium">ใกล้ฉัน</span>
             </button>
         </div>
     </nav>
@@ -469,6 +477,11 @@
                     document.getElementById('location-status').classList.add('text-green-600');
                 } else { showToast("ไม่พบสถานที่"); }
             } catch (e) { showToast("การค้นหาผิดพลาด"); } finally { icon.className = originalClass; }
+        }
+
+        // NEW: Open Google Maps Search
+        function openNearMe() {
+            window.open('https://www.google.com/maps/search/ร้านกาแฟ+ใกล้ฉัน', '_blank');
         }
 
         // --- IMAGE & UPLOAD ---
